@@ -16,19 +16,37 @@ var posts = [{
   user: 'Mark Twain'
 }];
 
+var Post = function Post(props) {
+  var post = props.post;
+  return React.createElement(
+    'p',
+    null,
+    post.body,
+    ' - ',
+    post.user
+  );
+};
+
 var Feed = function Feed(props) {
   var posts = props.posts.map(function (post) {
-    return React.createElement(
-      'p',
-      { key: post.id },
-      post.body,
-      ' - ',
-      post.user
-    );
+    return React.createElement(Post, { key: post.id, post: post });
   });
   return React.createElement(
     'div',
     null,
+    React.createElement(
+      'p',
+      null,
+      'First feed'
+    ),
+    posts,
+    React.createElement('hr', null),
+    React.createElement('hr', null),
+    React.createElement(
+      'p',
+      null,
+      'Second feed, same as first, no issues'
+    ),
     posts
   );
 };

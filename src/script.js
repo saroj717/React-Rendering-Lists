@@ -18,12 +18,26 @@ const posts = [
   },
 ]
 
+
+const Post = (props) => {
+  const post = props.post;
+  return <p>{post.body} - {post.user}</p>
+}
+
 const Feed = (props) => {
-  const posts = props.posts.map(post => <p key={post.id}>{post.body} - {post.user}</p>);
+  const posts = props.posts.map(post => <Post key={post.id} post={post}/>);
   return (
-    <div>{posts}</div>
+    <div>
+      <h1>First feed</h1>
+      {posts}
+      <hr/>
+      <hr/>
+      <h2>Second feed, same as first, no issues</h2>
+      {posts}
+      </div>
   )
 }
+
 
 
 
